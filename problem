@@ -1,0 +1,231 @@
+ (kafka.server.KafkaConfig) [main]
+2021-05-18 18:07:23,517 INFO [ThrottledChannelReaper-Fetch]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-Fetch]
+2021-05-18 18:07:23,518 INFO [ThrottledChannelReaper-Produce]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-Produce]
+2021-05-18 18:07:23,520 INFO [ThrottledChannelReaper-Request]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-Request]
+2021-05-18 18:07:23,522 INFO [ThrottledChannelReaper-ControllerMutation]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-ControllerMutation]
+2021-05-18 18:07:23,627 INFO Loading logs from log dirs ArrayBuffer(/var/lib/kafka/data-0/kafka-log2) (kafka.log.LogManager) [main]
+2021-05-18 18:07:23,630 INFO Attempting recovery for all logs in /var/lib/kafka/data-0/kafka-log2 since no clean shutdown file was found (kafka.log.LogManager) [main]
+2021-05-18 18:07:23,875 INFO [Log partition=logstash-6, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 77029696 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:23,877 INFO [Log partition=logstash-6, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 77029696 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:23,978 INFO [ProducerStateManager partition=logstash-6] Loading producer state from snapshot file '/var/lib/kafka/data-0/kafka-log2/logstash-6/00000000000077029696.snapshot' (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:25,096 INFO [ProducerStateManager partition=logstash-6] Writing producer snapshot at offset 77112167 (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:25,107 ERROR Error while writing to checkpoint file /var/lib/kafka/data-0/kafka-log2/logstash-6/leader-epoch-checkpoint (kafka.server.LogDirFailureChannel) [pool-4-thread-1]
+java.io.IOException: No space left on device
+        at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+        at java.base/java.io.FileOutputStream.write(FileOutputStream.java:354)
+        at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:233)
+        at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:312)
+        at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:316)
+        at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:153)
+        at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:251)
+        at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:257)
+        at kafka.server.checkpoints.CheckpointFile.liftedTree1$1(CheckpointFile.scala:108)
+        at kafka.server.checkpoints.CheckpointFile.write(CheckpointFile.scala:92)
+        at kafka.server.checkpoints.LeaderEpochCheckpointFile.write(LeaderEpochCheckpointFile.scala:70)
+        at kafka.server.epoch.LeaderEpochFileCache.flush(LeaderEpochFileCache.scala:292)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$3(LeaderEpochFileCache.scala:264)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$1(LeaderEpochFileCache.scala:260)
+        at kafka.server.epoch.LeaderEpochFileCache.truncateFromStart(LeaderEpochFileCache.scala:255)
+        at kafka.log.Log.$anonfun$new$2(Log.scala:310)
+        at kafka.log.Log.<init>(Log.scala:310)
+        at kafka.log.Log$.apply(Log.scala:2532)
+        at kafka.log.LogManager.loadLog(LogManager.scala:273)
+        at kafka.log.LogManager.$anonfun$loadLogs$12(LogManager.scala:352)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-18 18:07:25,113 ERROR There was an error in one of the threads during logs loading: org.apache.kafka.common.errors.KafkaStorageException: Error while writing to checkpoint file /var/lib/kafka/data-0/kafka-log2/logstash-6/leader-epoch-checkpoint (kafka.log.LogManager) [main]
+2021-05-18 18:07:25,114 INFO [Log partition=__strimzi_store_topic-0, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,115 INFO [Log partition=__strimzi_store_topic-0, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,174 INFO [ProducerStateManager partition=__strimzi_store_topic-0] Writing producer snapshot at offset 5 (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:25,176 ERROR Error while writing to checkpoint file /var/lib/kafka/data-0/kafka-log2/__strimzi_store_topic-0/leader-epoch-checkpoint (kafka.server.LogDirFailureChannel) [pool-4-thread-1]
+java.io.IOException: No space left on device
+        at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+        at java.base/java.io.FileOutputStream.write(FileOutputStream.java:354)
+        at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:233)
+        at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:312)
+        at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:316)
+        at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:153)
+        at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:251)
+        at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:257)
+        at kafka.server.checkpoints.CheckpointFile.liftedTree1$1(CheckpointFile.scala:108)
+        at kafka.server.checkpoints.CheckpointFile.write(CheckpointFile.scala:92)
+        at kafka.server.checkpoints.LeaderEpochCheckpointFile.write(LeaderEpochCheckpointFile.scala:70)
+        at kafka.server.epoch.LeaderEpochFileCache.flush(LeaderEpochFileCache.scala:292)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$3(LeaderEpochFileCache.scala:264)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$1(LeaderEpochFileCache.scala:260)
+        at kafka.server.epoch.LeaderEpochFileCache.truncateFromStart(LeaderEpochFileCache.scala:255)
+        at kafka.log.Log.$anonfun$new$2(Log.scala:310)
+        at kafka.log.Log.<init>(Log.scala:310)
+        at kafka.log.Log$.apply(Log.scala:2532)
+        at kafka.log.LogManager.loadLog(LogManager.scala:273)
+        at kafka.log.LogManager.$anonfun$loadLogs$12(LogManager.scala:352)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-18 18:07:25,176 ERROR [KafkaServer id=2] Fatal error during KafkaServer startup. Prepare to shutdown (kafka.server.KafkaServer) [main]
+org.apache.kafka.common.errors.KafkaStorageException: Error while writing to checkpoint file /var/lib/kafka/data-0/kafka-log2/logstash-6/leader-epoch-checkpoint
+Caused by: java.io.IOException: No space left on device
+        at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+        at java.base/java.io.FileOutputStream.write(FileOutputStream.java:354)
+        at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:233)
+        at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:312)
+        at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:316)
+        at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:153)
+        at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:251)
+        at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:257)
+        at kafka.server.checkpoints.CheckpointFile.liftedTree1$1(CheckpointFile.scala:108)
+        at kafka.server.checkpoints.CheckpointFile.write(CheckpointFile.scala:92)
+        at kafka.server.checkpoints.LeaderEpochCheckpointFile.write(LeaderEpochCheckpointFile.scala:70)
+        at kafka.server.epoch.LeaderEpochFileCache.flush(LeaderEpochFileCache.scala:292)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$3(LeaderEpochFileCache.scala:264)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$1(LeaderEpochFileCache.scala:260)
+        at kafka.server.epoch.LeaderEpochFileCache.truncateFromStart(LeaderEpochFileCache.scala:255)
+        at kafka.log.Log.$anonfun$new$2(Log.scala:310)
+        at kafka.log.Log.<init>(Log.scala:310)
+        at kafka.log.Log$.apply(Log.scala:2532)
+        at kafka.log.LogManager.loadLog(LogManager.scala:273)
+        at kafka.log.LogManager.$anonfun$loadLogs$12(LogManager.scala:352)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-18 18:07:25,178 INFO [KafkaServer id=2] shutting down (kafka.server.KafkaServer) [main]
+2021-05-18 18:07:25,178 INFO [Log partition=__consumer_offsets-40, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,178 INFO [Log partition=__consumer_offsets-40, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,187 INFO [feature-zk-node-event-process-thread]: Shutting down (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread) [main]
+2021-05-18 18:07:25,188 INFO [feature-zk-node-event-process-thread]: Stopped (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread) [feature-zk-node-event-process-thread]
+2021-05-18 18:07:25,188 INFO [feature-zk-node-event-process-thread]: Shutdown completed (kafka.server.FinalizedFeatureChangeListener$ChangeNotificationProcessorThread) [main]
+2021-05-18 18:07:25,190 INFO [Log partition=__consumer_offsets-40, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,196 INFO [ZooKeeperClient Kafka server] Closing. (kafka.zookeeper.ZooKeeperClient) [main]
+2021-05-18 18:07:25,204 INFO channel is told closing (org.apache.zookeeper.ClientCnxnSocketNetty) [main]
+2021-05-18 18:07:25,208 INFO channel is disconnected: [id: 0xe2ff809a, L:/10.20.7.58:39020 ! R:my-cluster-zookeeper-client/10.19.60.5:2181] (org.apache.zookeeper.ClientCnxnSocketNetty) [nioEventLoopGroup-2-1]
+2021-05-18 18:07:25,208 INFO channel is told closing (org.apache.zookeeper.ClientCnxnSocketNetty) [nioEventLoopGroup-2-1]
+2021-05-18 18:07:25,269 INFO Session: 0x300440cde5c077c closed (org.apache.zookeeper.ZooKeeper) [main]
+2021-05-18 18:07:25,271 INFO [ZooKeeperClient Kafka server] Closed. (kafka.zookeeper.ZooKeeperClient) [main]
+2021-05-18 18:07:25,273 INFO [Log partition=__consumer_offsets-11, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,273 INFO [Log partition=__consumer_offsets-11, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,275 INFO EventThread shut down for session: 0x300440cde5c077c (org.apache.zookeeper.ClientCnxn) [main-EventThread]
+2021-05-18 18:07:25,277 INFO [ThrottledChannelReaper-Fetch]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:25,281 INFO [Log partition=__consumer_offsets-11, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,289 INFO [Log partition=__consumer_offsets-38, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,289 INFO [Log partition=__consumer_offsets-38, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,294 INFO [Log partition=__consumer_offsets-38, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,301 INFO [Log partition=__consumer_offsets-34, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,302 INFO [Log partition=__consumer_offsets-34, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,370 INFO [Log partition=__consumer_offsets-34, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,377 INFO [Log partition=__consumer_offsets-24, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,377 INFO [Log partition=__consumer_offsets-24, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,382 INFO [Log partition=__consumer_offsets-24, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,386 INFO [Log partition=__consumer_offsets-22, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,387 INFO [Log partition=__consumer_offsets-22, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,390 INFO [Log partition=__consumer_offsets-22, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,394 INFO [Log partition=__consumer_offsets-32, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,394 INFO [Log partition=__consumer_offsets-32, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,398 INFO [Log partition=__consumer_offsets-32, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,402 INFO [Log partition=__consumer_offsets-5, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,402 INFO [Log partition=__consumer_offsets-5, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,405 INFO [Log partition=__consumer_offsets-5, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,491 INFO [Log partition=logstash-3, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 77037803 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,491 INFO [Log partition=logstash-3, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 77037803 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:25,495 INFO [ProducerStateManager partition=logstash-3] Loading producer state from snapshot file '/var/lib/kafka/data-0/kafka-log2/logstash-3/00000000000077037803.snapshot' (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:25,568 INFO [ThrottledChannelReaper-Fetch]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-Fetch]
+2021-05-18 18:07:25,569 INFO [ThrottledChannelReaper-Fetch]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:25,569 INFO [ThrottledChannelReaper-Produce]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:25,573 INFO [ThrottledChannelReaper-Produce]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-Produce]
+2021-05-18 18:07:25,573 INFO [ThrottledChannelReaper-Produce]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:25,574 INFO [ThrottledChannelReaper-Request]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:26,073 INFO [ProducerStateManager partition=logstash-3] Writing producer snapshot at offset 77112164 (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:26,076 ERROR Error while writing to checkpoint file /var/lib/kafka/data-0/kafka-log2/logstash-3/leader-epoch-checkpoint (kafka.server.LogDirFailureChannel) [pool-4-thread-1]
+java.io.IOException: No space left on device
+        at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+        at java.base/java.io.FileOutputStream.write(FileOutputStream.java:354)
+        at java.base/sun.nio.cs.StreamEncoder.writeBytes(StreamEncoder.java:233)
+        at java.base/sun.nio.cs.StreamEncoder.implFlushBuffer(StreamEncoder.java:312)
+        at java.base/sun.nio.cs.StreamEncoder.implFlush(StreamEncoder.java:316)
+        at java.base/sun.nio.cs.StreamEncoder.flush(StreamEncoder.java:153)
+        at java.base/java.io.OutputStreamWriter.flush(OutputStreamWriter.java:251)
+        at java.base/java.io.BufferedWriter.flush(BufferedWriter.java:257)
+        at kafka.server.checkpoints.CheckpointFile.liftedTree1$1(CheckpointFile.scala:108)
+        at kafka.server.checkpoints.CheckpointFile.write(CheckpointFile.scala:92)
+        at kafka.server.checkpoints.LeaderEpochCheckpointFile.write(LeaderEpochCheckpointFile.scala:70)
+        at kafka.server.epoch.LeaderEpochFileCache.flush(LeaderEpochFileCache.scala:292)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$3(LeaderEpochFileCache.scala:264)
+        at kafka.server.epoch.LeaderEpochFileCache.$anonfun$truncateFromStart$1(LeaderEpochFileCache.scala:260)
+        at kafka.server.epoch.LeaderEpochFileCache.truncateFromStart(LeaderEpochFileCache.scala:255)
+        at kafka.log.Log.$anonfun$new$2(Log.scala:310)
+        at kafka.log.Log.<init>(Log.scala:310)
+        at kafka.log.Log$.apply(Log.scala:2532)
+        at kafka.log.LogManager.loadLog(LogManager.scala:273)
+        at kafka.log.LogManager.$anonfun$loadLogs$12(LogManager.scala:352)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-18 18:07:26,080 INFO [Log partition=__consumer_offsets-45, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,080 INFO [Log partition=__consumer_offsets-45, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,086 INFO [Log partition=__consumer_offsets-45, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,174 INFO [Log partition=logstash-4, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 77035750 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,174 INFO [Log partition=logstash-4, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 77035750 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,178 INFO [ProducerStateManager partition=logstash-4] Loading producer state from snapshot file '/var/lib/kafka/data-0/kafka-log2/logstash-4/00000000000077035750.snapshot' (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:26,574 INFO [ThrottledChannelReaper-Request]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-Request]
+2021-05-18 18:07:26,575 INFO [ThrottledChannelReaper-Request]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:26,575 INFO [ThrottledChannelReaper-ControllerMutation]: Shutting down (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:26,576 INFO [Log partition=__consumer_offsets-29, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,576 INFO [Log partition=__consumer_offsets-29, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,581 INFO [Log partition=__consumer_offsets-29, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,585 INFO [Log partition=__consumer_offsets-14, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,585 INFO [Log partition=__consumer_offsets-14, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,590 INFO [Log partition=__consumer_offsets-14, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,608 INFO [Log partition=logstash-7, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 77041289 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,667 INFO [Log partition=logstash-7, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 77041289 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,673 INFO [ProducerStateManager partition=logstash-7] Loading producer state from snapshot file '/var/lib/kafka/data-0/kafka-log2/logstash-7/00000000000077041289.snapshot' (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:26,911 INFO [Log partition=__consumer_offsets-39, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,911 INFO [Log partition=__consumer_offsets-39, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,915 INFO [Log partition=__consumer_offsets-39, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,920 INFO [Log partition=__consumer_offsets-43, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 0 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:26,921 INFO [Log partition=__consumer_offsets-43, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 0 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:27,390 INFO [ProducerStateManager partition=__consumer_offsets-43] Writing producer snapshot at offset 519725 (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:27,392 ERROR Error while loading log dir /var/lib/kafka/data-0/kafka-log2 (kafka.log.LogManager) [pool-4-thread-1]
+java.io.IOException: No space left on device
+        at java.base/sun.nio.ch.FileDispatcherImpl.write0(Native Method)
+        at java.base/sun.nio.ch.FileDispatcherImpl.write(FileDispatcherImpl.java:62)
+        at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:113)
+        at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:79)
+        at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:280)
+        at kafka.log.ProducerStateManager$.kafka$log$ProducerStateManager$$writeSnapshot(ProducerStateManager.scala:441)
+        at kafka.log.ProducerStateManager.takeSnapshot(ProducerStateManager.scala:661)
+        at kafka.log.Log.recoverSegment(Log.scala:678)
+        at kafka.log.Log.recoverLog(Log.scala:814)
+        at kafka.log.Log.$anonfun$loadSegments$3(Log.scala:750)
+        at scala.runtime.java8.JFunction0$mcJ$sp.apply(JFunction0$mcJ$sp.java:23)
+        at kafka.log.Log.retryOnOffsetOverflow(Log.scala:2398)
+        at kafka.log.Log.loadSegments(Log.scala:750)
+        at kafka.log.Log.<init>(Log.scala:300)
+        at kafka.log.Log$.apply(Log.scala:2532)
+        at kafka.log.LogManager.loadLog(LogManager.scala:273)
+        at kafka.log.LogManager.$anonfun$loadLogs$12(LogManager.scala:352)
+        at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+        at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+        at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+        at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+2021-05-18 18:07:27,408 INFO [Log partition=logstash-5, dir=/var/lib/kafka/data-0/kafka-log2] Recovering unflushed segment 77040228 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:27,408 INFO [Log partition=logstash-5, dir=/var/lib/kafka/data-0/kafka-log2] Loading producer state till offset 77040228 with message format version 2 (kafka.log.Log) [pool-4-thread-1]
+2021-05-18 18:07:27,413 INFO [ProducerStateManager partition=logstash-5] Loading producer state from snapshot file '/var/lib/kafka/data-0/kafka-log2/logstash-5/00000000000077040228.snapshot' (kafka.log.ProducerStateManager) [pool-4-thread-1]
+2021-05-18 18:07:27,567 INFO [ThrottledChannelReaper-ControllerMutation]: Stopped (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [ThrottledChannelReaper-ControllerMutation]
+2021-05-18 18:07:27,567 INFO [ThrottledChannelReaper-ControllerMutation]: Shutdown completed (kafka.server.ClientQuotaManager$ThrottledChannelReaper) [main]
+2021-05-18 18:07:27,569 INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics) [main]
+2021-05-18 18:07:27,569 INFO Closing reporter org.apache.kafka.common.metrics.JmxReporter (org.apache.kafka.common.metrics.Metrics) [main]
+2021-05-18 18:07:27,570 INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics) [main]
+2021-05-18 18:07:27,576 INFO Broker and topic stats closed (kafka.server.BrokerTopicStats) [main]
+2021-05-18 18:07:27,598 INFO App info kafka.server for 2 unregistered (org.apache.kafka.common.utils.AppInfoParser) [main]
+2021-05-18 18:07:27,599 INFO [KafkaServer id=2] shut down completed (kafka.server.KafkaServer) [main]
+2021-05-18 18:07:27,600 ERROR Exiting Kafka. (kafka.server.KafkaServerStartable) [main]
+2021-05-18 18:07:27,668 INFO [KafkaServer id=2] shutting down (kafka.server.KafkaServer) [kafka-shutdown-hook]
